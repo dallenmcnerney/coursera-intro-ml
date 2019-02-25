@@ -1,0 +1,44 @@
+Intro to Machine Learning
+Coursera - Andrew Ng
+Create Date: 2/25/2019
+Last Update: 2/25/2019
+
+Supervised learning: "Right answers" given
+Unsupervised learning: Not telling the algorithm in advance the "write answers"
+
+Classification: Discrete valued output (e.g. 0 or 1)
+Regression: Predict continuous valued output
+
+Cocktail party problem algorithm:
+[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');
+
+Notation:
+m = Number of training examples
+x = input variable/features
+y = output variable/target variable
+
+(x,y) - one training example
+(x^(i), y^(i)) - ith training example
+
+--------------------------------
+- Univariate linear regression -
+--------------------------------
+
+h(x) = theta(0) + theta(1)x
+ 
+thetas = parameters
+
+Want to minimize theta(0) and theta(1). To do this, can minimize (1/(2m)) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))^2.
+
+J(theta(0), theta(1)) = (1/(2m)) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))^2
+
+Minimize J(theta(0), theta(1)) - This is the cost function
+
+This cost function is called the squared error function. Squared error cost function will work well for most regression problems.
+
+--------------------
+- Gradient Descent -
+--------------------
+
+Have some function J(theta(0), theta(1))
+Want min J(theta(0), theta(1))
