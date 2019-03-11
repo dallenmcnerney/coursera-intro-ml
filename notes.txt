@@ -42,3 +42,46 @@ This cost function is called the squared error function. Squared error cost func
 
 Have some function J(theta(0), theta(1))
 Want min J(theta(0), theta(1))
+
+Make initial guesses for theta(0) and theta(1), and keep changing them until you hit a local optima (may not be global optima)
+
+Gradient Descent Algorithm:
+
+Repeat until convergence {
+theta(j) := theta(j) - alpha * (delta)/(delta * theta(1)) * J(theta(0),theta(1))
+}
+for j = 0 and j = 1
+
+theta(0) and theta(1) must be updated simultaneously.
+
+If alpha is too large, can overshoot the minimum. It may fail to converge or even diverge.
+
+Gradient descent will converge on a local minimum, even if a a fixed learning rate of alpha.
+
+	*****************************************
+	* Gradient Descent w/ Linear Regression *
+	*****************************************
+		
+		Gradient Descent Algorithm:
+		
+		Repeat until convergence {
+		theta(j) := theta(j) - alpha * (delta)/(delta * theta(1)) * J(theta(0),theta(1))
+		}
+		for j = 0 and j = 1
+		
+		Linear Regression Algorithm:
+		
+		h(x) = theta(0) + theta(1)x
+		
+		J(theta(0), theta(1)) = (1/(2m)) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))^2
+		
+		--------------
+		-- Combined --
+		--------------		
+		
+		Repeat until convergence {
+		theta(0) := theta(0) - alpha * (1/m) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))
+		theta(1) := theta(1) - alpha * (1/m) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))
+		}
+		
+		
