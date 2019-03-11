@@ -84,4 +84,5 @@ Gradient descent will converge on a local minimum, even if a a fixed learning ra
 		theta(1) := theta(1) - alpha * (1/m) * (m)sum(i=1)(h(theta)(x^(i)) - y^(i))
 		}
 		
+		Cost function of a linear regression will always be convex (bowl-like)
 		
