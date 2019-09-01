@@ -1,8 +1,5 @@
 import numpy as np
-import os
 import matplotlib.pyplot as plt
-
-data_path = os.path.join(os.getcwd(), r'week-2\octave\machine-learning-ex1\ex1', 'ex1data1.txt')
 
 
 # Shows a scatter plot given x and y arrays
@@ -29,8 +26,13 @@ def gradient_descent(x, y, theta, alpha, iterations=1000):
     return theta, j_history
 
 
+def normal_equation(x, y):
+    theta = np.matmul(np.matmul(np.linalg.pinv(np.matmul(np.transpose(x), x)), np.transpose(x)), y)
+    return theta
+
+
 # Load initial data
-data = np.genfromtxt(data_path, delimiter=',')
+data = np.genfromtxt('week-2/octave/machine-learning-ex1/ex1/ex1data1.txt', delimiter=',')
 x_data = data[:, 0]
 y_data = data[:, 1]
 m = len(y_data)
@@ -62,3 +64,34 @@ print('Theta found by gradient descent:\n')
 print(theta)
 print('Expected theta values (approx)\n')
 print(' -3.6303\n  1.1664\n\n')
+
+# Normal equation
+
+theta = normal_equation(x_data_ones, y_data)
+print('Theta found by normal equation:\n')
+print(theta)
+print('Expected theta values (approx)\n')
+print(' -3.6303\n  1.1664\n\n')
+
+# Second data set
+
+data = np.genfromtxt('week-2/octave/machine-learning-ex1/ex1/ex1data2.txt', delimiter=',')
+x_data = data[:, 0:2]
+y_data = data[:, 2]
+m = len(y_data)
+
+x_data_ones = np.column_stack((np.ones(m), x_data))
+
+# Calculate theta using the normal equation
+theta = normal_equation(x_data_ones, y_data)
+
+# Normal equation results
+print('Theta computed from the normal equations: \n')
+print(theta)
+print('\n')
+
+# Estimate the price of a 1650 sq-ft, 3 br house
+price = np.matmul(np.array([1, 1650, 3]), theta)
+
+print('Predicted price of a 1650 sq-ft, 3 br house \n')
+print('(using normal equations):\n $%s\n' % price)
