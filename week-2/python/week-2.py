@@ -73,6 +73,22 @@ print(theta)
 print('Expected theta values (approx)\n')
 print(' -3.6303\n  1.1664\n\n')
 
+theta0_vals = np.linspace(-10, 10, 100)
+theta1_vals = np.linspace(-1, 4, 100)
+J_vals = np.zeros([len(theta0_vals), len(theta1_vals)])
+
+for i in range(len(theta0_vals)):
+    for j in range(len(theta1_vals)):
+        t = np.array([theta0_vals[i], theta1_vals[j]])
+        J_vals[i, j] = compute_cost(x_data_ones, y_data, t)
+
+J_vals = np.transpose(J_vals)
+
+plt.contour(theta0_vals, theta1_vals, J_vals, np.logspace(-2, 3, 10))
+plt.xlabel('theta_0')
+plt.ylabel('theta_1')
+plt.plot(theta[0], theta[1], marker='x', markersize=10, color='r')
+
 # Second data set
 
 data = np.genfromtxt('week-2/octave/machine-learning-ex1/ex1/ex1data2.txt', delimiter=',')
